@@ -1,3 +1,35 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
 body{
     font-family: "Poppins", sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url("./img/bg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.weather-container{
+    width: 40%;
+    height: 60%;
+    padding: 5%;
+}
+
+.glass-effect{
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-right: 2px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
 }
