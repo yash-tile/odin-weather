@@ -7,6 +7,18 @@ body{
     font-family: "Poppins", sans-serif;
 }
 
+.main-text{
+    font-size: 48px;
+}
+
+.sub-text{
+    font-size: 20px;
+}
+
+.muted-text{
+    font-size: 16px;
+}
+
 .container{
     display: flex;
     justify-content: center;
@@ -18,9 +30,9 @@ body{
 }
 
 .weather-container{
-    width: 40%;
-    height: 60%;
-    padding: 5%;
+    width: 40vw;
+    height: 55vh;
+    padding: 2%;
 }
 
 .glass-effect{
@@ -31,5 +43,37 @@ body{
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-right: 2px solid rgba(255, 255, 255, 0.1);
     border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(5px);
+}
+
+.weather-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.weather-header-item{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.weather-content{
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.weather-info{
+    margin-top: 1.7rem;
+}
+
+.weather-row{
+    display: flex;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+
+.weather-col{
+    flex: 1;
 }

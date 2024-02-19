@@ -43,6 +43,30 @@ function parseCurrentWeather(data){
 // to render weather data to ui
 function displayCurrentWeather(data){
     console.log(data);
+
+    // select html elements
+    const location = document.getElementById("location");
+    const lastUpdated = document.getElementById("last-updated");
+    const conditionImg = document.getElementById("condition-img");
+    const temp = document.getElementById("temp");
+    const tempUnit = document.getElementById("temp-unit");
+    const condtionText = document.getElementById("condition-text");
+    const feelslikeTemp = document.getElementById("feelslike-temp");
+    const humidity = document.getElementById("humidity");
+    const windspeed = document.getElementById("windspeed");
+    const aqi = document.getElementById("aqi");
+
+    // render data to selected elements
+    location.textContent = data.location;
+    lastUpdated.textContent = data.last_updated;
+    conditionImg.src = data.condition_icon; 
+    temp.textContent = data.temp_c;
+    tempUnit.textContent = "°C";
+    condtionText.textContent = data.condition_text;
+    feelslikeTemp.textContent = data.feelslike_c;
+    humidity.textContent = data.humidity;
+    windspeed.textContent = data.wind_kph;
+    aqi.textContent = airQualityCategories[data.indexValue];
 }
 
 // to get current weather information

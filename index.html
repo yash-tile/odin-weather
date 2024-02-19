@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <!-- boxicons cdn -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,8 +15,47 @@
 </head>
 <body>
     <div class="container">
+
+        
+
         <div class="weather-container glass-effect">
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Atque, quis ipsa autem ullam consequatur impedit ratione iste recusandae sed quae!</p>
+
+            <div class="weather-header muted-text">
+                <p class="weather-header-item">
+                    <i class='bx bx-current-location bx-tada bx-sm'></i> 
+                    <span id="location"></span>
+                </p>
+                <p class="weather-header-item">
+                    <i class='bx bxs-time-five bx-flashing bx-sm'></i>
+                    Last updated: <span id="last-updated"></span>
+                </p>
+            </div>
+
+            <div class="weather-content">
+                <img src="" alt="weather condition image" id="condition-img">
+                <p class="main-text"><span id="temp"></span><span id="temp-unit"></span></p>
+                <p id="condition-text" class="sub-text"></p>
+            </div>
+
+            <div class="weather-info sub-text">
+                <div class="weather-row">
+                    <div class="weather-col">
+                        <p>Humidity: <span id="humidity"></span></p>
+                    </div>
+                    <div class="weather-col">
+                        <p>Wind Speed: <span id="windspeed"></span></p>
+                    </div>
+                </div>
+                <div class="weather-row">
+                    <div class="weather-col">
+                        <p>Feels-like: <span id="feelslike-temp"></span></p>
+                    </div>
+                    <div class="weather-col">
+                        <p>AQI: <span id="aqi"></span></p>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
