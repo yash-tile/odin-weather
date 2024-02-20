@@ -1,6 +1,5 @@
 const apiKey = "126ad1e6af5f45d8b5954840241602";
 const baseUri = "https://api.weatherapi.com/v1/";
-const locationId = "1129302";
 
 // AQI based on us-epa-index
 const airQualityCategories  = {
@@ -42,7 +41,8 @@ function parseCurrentWeather(data){
 
 // to render weather data to ui
 function displayCurrentWeather(data){
-    console.log(data);
+    // make weather container visible
+    document.getElementById('weather-container').style.display = 'block';
 
     // select html elements
     const location = document.getElementById("location");
@@ -69,10 +69,9 @@ function displayCurrentWeather(data){
     aqi.textContent = airQualityCategories[data.indexValue];
 }
 
-// to get current weather information
-async function getCurrentWeather(locationId){
-    const currentWeatherUri = `${baseUri}current.json?key=${apiKey}&aqi=yes&q=id:${locationId}`;
-    const response = await fetch(currentWeatherUri);
+// async code to make api requests
+async function makeRequest(uri){
+    const response = await fetch(uri);
     // validate response from promise
     if(!response.ok){
         return new Error(`Error! ${response.statusText}`);
@@ -81,9 +80,19 @@ async function getCurrentWeather(locationId){
     return data;
 }
 
-getCurrentWeather(locationId)
-    .then((data) => {
-        const parsedData = parseCurrentWeather(data);
-        displayCurrentWeather(parsedData);
-    })
-    .catch((err) => console.log(err));
+// to get current weather information
+function getCurrentWeather(searchTerm){
+    const currentWeatherUri = `${baseUri}current.json?key=${apiKey}&aqi=yes&q=${searchTerm}`;
+    makeRequest(currentWeatherUri)
+        .then((data) => {
+            const parsedData = parseCurrentWeather(data);
+            displayCurrentWeather(parsedData);
+        })
+        .catch((err) => console.log(err));
+}
+
+ function searchHandler(){
+    const inputBox = document.getElementById("input-box"); 
+    let searchTerm = inputBox.value;
+    getCurrentWeather(searchTerm);
+ }

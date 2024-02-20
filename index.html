@@ -16,9 +16,18 @@
 <body>
     <div class="container">
 
-        
+        <!-- location searchbar -->
+        <div class="search-box">
+            <div class="search-row">
+                <input type="text" class="sub-text" id="input-box" placeholder="Enter location...">
+                <button id="search-btn" onclick="searchHandler()" autocomplete="off"><i class='bx bx-search-alt-2 bx-sm'></i></button>
+            </div>
+        </div>
+        <div class="result-box">
+            
+        </div>
 
-        <div class="weather-container glass-effect">
+        <div class="glass-effect" id="weather-container">
 
             <div class="weather-header muted-text">
                 <p class="weather-header-item">
@@ -26,7 +35,7 @@
                     <span id="location"></span>
                 </p>
                 <p class="weather-header-item">
-                    <i class='bx bxs-time-five bx-flashing bx-sm'></i>
+                    <i class='bx bxs-time-five bx-sm'></i>
                     Last updated: <span id="last-updated"></span>
                 </p>
             </div>
@@ -40,18 +49,34 @@
             <div class="weather-info sub-text">
                 <div class="weather-row">
                     <div class="weather-col">
-                        <p>Humidity: <span id="humidity"></span></p>
+                        <p>
+                            <i class='bx bx-water'></i>
+                            Humidity: 
+                            <span id="humidity"></span>
+                        </p>
                     </div>
                     <div class="weather-col">
-                        <p>Wind Speed: <span id="windspeed"></span></p>
+                        <p>
+                            <i class='bx bx-wind'></i>
+                            Wind Speed: 
+                            <span id="windspeed"></span>
+                        </p>
                     </div>
                 </div>
                 <div class="weather-row">
                     <div class="weather-col">
-                        <p>Feels-like: <span id="feelslike-temp"></span></p>
+                        <p>
+                            <i class='bx bxs-hot'></i>
+                            Feels-like: 
+                            <span id="feelslike-temp"></span>
+                        </p>
                     </div>
                     <div class="weather-col">
-                        <p>AQI: <span id="aqi"></span></p>
+                        <p>
+                            <i class='bx bxl-tailwind-css' ></i>
+                            AQI: 
+                            <span id="aqi"></span>
+                        </p>
                     </div>
                 </div>
             </div>

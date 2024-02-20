@@ -12,7 +12,7 @@ body{
 }
 
 .sub-text{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .muted-text{
@@ -20,19 +20,49 @@ body{
 }
 
 .container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     min-height: 100vh;
     background: url("./img/bg.jpg");
     background-size: cover;
     background-position: center;
 }
 
-.weather-container{
+.search-box{
+    display: flex;
+    justify-content: center;
+    padding-top: 3rem;
+}
+
+.search-row{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 0.5rem 1rem;
+}
+
+#input-box{
+    width: 500px;
+    height: 30px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+}
+
+#search-btn{
+    background: none;
+    border: 0;
+    cursor: pointer;
+}
+
+#weather-container{
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 40vw;
     height: 55vh;
-    padding: 2%;
+    padding: 1rem 1.5rem;
+    display: none;
 }
 
 .glass-effect{
