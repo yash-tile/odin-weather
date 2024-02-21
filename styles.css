@@ -94,16 +94,32 @@ body{
     margin-top: 1.5rem;
 }
 
+#temp-unit-secondary{
+    color: #FFEEF4;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+#temp-unit-secondary:hover{
+    color: white;
+}
+
 .weather-info{
-    margin-top: 1.7rem;
+    margin-top: 1.8rem;
 }
 
 .weather-row{
     display: flex;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .weather-col{
     flex: 1;
+}
+
+.arrow-navigation{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
 }
