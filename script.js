@@ -1,4 +1,4 @@
-const apiKey = "126ad1e6af5f45d8b5954840241602";
+const apiKey = prompt("Please enter your api key from weatherapi.com: ");
 const baseUri = "https://api.weatherapi.com/v1/";
 
 // AQI based on us-epa-index
@@ -62,6 +62,7 @@ function displayCurrentWeather(data){
 async function makeRequest(uri){
     const response = await fetch(uri);
     // validate response from promise
+    console.log(response);
     if(!response.ok){
         throw new Error(`Error! ${response.status}`);
     }
