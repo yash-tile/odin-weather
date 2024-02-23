@@ -62,7 +62,6 @@ function displayCurrentWeather(data){
 async function makeRequest(uri){
     const response = await fetch(uri);
     // validate response from promise
-    console.log(response);
     if(!response.ok){
         throw new Error(`Error! ${response.status}`);
     }
