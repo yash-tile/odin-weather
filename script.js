@@ -1,4 +1,5 @@
 const baseUri = "https://api.weatherapi.com/v1/current.json?";
+const inputBox = document.getElementById("input-box"); 
 
 let apiKey = sessionStorage.getItem("apiKey");
 if (!apiKey) {
@@ -92,7 +93,12 @@ async function getCurrentWeather(searchTerm) {
 }
 
  function searchHandler(){
-    const inputBox = document.getElementById("input-box"); 
     let searchTerm = inputBox.value;
     getCurrentWeather(searchTerm);
 }
+
+inputBox.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        searchHandler();
+    }
+});
