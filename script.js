@@ -1,5 +1,10 @@
-const apiKey = prompt("Please enter your api key from weatherapi.com: ");
-const baseUri = "https://api.weatherapi.com/v1/";
+const baseUri = "https://api.weatherapi.com/v1/current.json?";
+
+let apiKey = sessionStorage.getItem("apiKey");
+if (!apiKey) {
+    apiKey = prompt("Please enter your API key from weatherapi.com: ");
+    sessionStorage.setItem("apiKey", apiKey);
+}
 
 // AQI based on us-epa-index
 const airQualityCategories  = {
@@ -22,7 +27,7 @@ function parseCurrentWeather(data){
     const { wind_kph, humidity, feelslike_c } = data.current;
     const { air_quality: { "us-epa-index": indexValue } } = data.current;
     
-    return {
+    const parsedWeather =  {
         location, 
         last_updated,
         condition_icon, 
@@ -32,7 +37,8 @@ function parseCurrentWeather(data){
         humidity,
         wind_kph,
         indexValue
-    }
+    };
+    return parsedWeather;
 }
 
 function displayCurrentWeather(data){
@@ -69,20 +75,20 @@ async function makeRequest(uri){
     return data;
 }
 
-function getCurrentWeather(searchTerm){
-    const currentWeatherUri = `${baseUri}current.json?key=${apiKey}&aqi=yes&q=${searchTerm}`;
-    makeRequest(currentWeatherUri)
-        .then((data) => {
-            console.log(data);
-            const parsedData = parseCurrentWeather(data);
-            displayCurrentWeather(parsedData);
-        })
-        .catch((err) => {
-            console.log(err.message);
-            const weatherContainer = document.getElementById("weather-container");
-            weatherContainer.style.display = 'block';
-            weatherContainer.innerHTML = "Bad request! Please enter a valid city name.";
-        });
+async function getCurrentWeather(searchTerm) {
+    try {
+        const currentWeatherUri = `${baseUri}key=${apiKey}&aqi=yes&q=${searchTerm}`;
+        const data = await makeRequest(currentWeatherUri);
+        console.log(data);
+        const parsedData = parseCurrentWeather(data);
+        displayCurrentWeather(parsedData);
+    } 
+    catch (err) {
+        console.log(err.message);
+        const weatherContainer = document.getElementById("weather-container");
+        weatherContainer.style.display = 'block';
+        weatherContainer.innerHTML = "Bad request! Please enter a valid city name.";
+    }
 }
 
  function searchHandler(){
