@@ -42,9 +42,13 @@ function parseCurrentWeather(data){
     return parsedWeather;
 }
 
-function displayCurrentWeather(data){
-    document.getElementById('weather-container').style.display = 'block';
+function showWeatherContainer(){
+    const weatherContainer = document.getElementById("weather-container");
+    weatherContainer.style.display = 'block';
+}
 
+function displayCurrentWeather(data){
+    showWeatherContainer();
     const location = document.getElementById("location");
     const lastUpdated = document.getElementById("last-updated");
     const conditionImg = document.getElementById("condition-img");
@@ -86,9 +90,7 @@ async function getCurrentWeather(searchTerm) {
     } 
     catch (err) {
         console.log(err.message);
-        const weatherContainer = document.getElementById("weather-container");
-        weatherContainer.style.display = 'block';
-        weatherContainer.innerHTML = "Bad request! Please enter a valid city name.";
+        alert("Bad request! Please enter a valid city name.");
     }
 }
 
