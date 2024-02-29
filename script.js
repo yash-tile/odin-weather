@@ -70,37 +70,35 @@ function displayCurrentWeather(data){
     aqi.textContent = airQualityCategories[data.indexValue];
 }
 
+// to fetch data from api url, returns a promise object
 async function makeRequest(uri){
     const response = await fetch(uri);
-    // validate response from promise
-    if(!response.ok){
-        throw new Error(`Error! ${response.status}`);
-    }
     const data = await response.json();
     return data;
 }
 
-async function getCurrentWeather(searchTerm) {
+async function getCurrentWeather() {
     try {
+        inputBox.disabled = true; // to disable input while while processing a api request
+        let searchTerm = inputBox.value;
         const currentWeatherUri = `${baseUri}key=${apiKey}&aqi=yes&q=${searchTerm}`;
         const data = await makeRequest(currentWeatherUri);
         console.log(data);
+        // if json response object from api has an error attribute
+        if(data.error) {
+            throw new Error(data.error.message);
+        }
         const parsedData = parseCurrentWeather(data);
         displayCurrentWeather(parsedData);
     } 
     catch (err) {
-        console.log(err.message);
-        alert("Bad request! Please enter a valid city name.");
+        alert(err);
     }
-}
-
- function searchHandler(){
-    let searchTerm = inputBox.value;
-    getCurrentWeather(searchTerm);
+    finally{ inputBox.disabled = false; }
 }
 
 inputBox.addEventListener("keydown", function(event) {
     if (event.key === "Enter") {
-        searchHandler();
+        getCurrentWeather();
     }
 });
